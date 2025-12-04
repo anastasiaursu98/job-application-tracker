@@ -40,14 +40,10 @@ const jobSlice = createSlice({
       setJobsToStorage(state.jobs);
     },
     updateJob: (state, action: PayloadAction<Job>) => {
-      const upadtedJob = state.jobs.find((job) => job.id === action.payload.id);
-      console.log("upadtedJob", upadtedJob);
-      if (upadtedJob) {
-        state.jobs = state.jobs.map((jobs) =>
-          jobs.id === action.payload.id ? action.payload : jobs
-        );
-        setJobsToStorage(state.jobs);
-      }
+      state.jobs = state.jobs.map((jobs) =>
+        jobs.id === action.payload.id ? action.payload : jobs
+      );
+      setJobsToStorage(state.jobs);
     },
     deleteJob: (state, action: PayloadAction<string>) => {
       state.jobs = state.jobs.filter((job) => job.id !== action.payload);

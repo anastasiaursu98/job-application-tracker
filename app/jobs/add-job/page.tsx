@@ -1,3 +1,6 @@
+"use client";
+
+import { Suspense } from "react";
 import JobFormPage from "@/features/jobs/components/add-job/JobFormPage";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Home } from "lucide-react";
@@ -24,7 +27,9 @@ export default function AddJobRoute() {
           Add New Job Application
         </h1>
       </div>
-      <JobFormPage />
+      <Suspense fallback={<div className="max-w-4xl mx-auto">Loading...</div>}>
+        <JobFormPage />
+      </Suspense>
     </div>
   );
 }

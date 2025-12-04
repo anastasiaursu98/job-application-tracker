@@ -11,10 +11,18 @@ import { JOBS_STORAGE_KEY } from "../store/jobSlice";
 import { setJobs } from "../store/jobSlice";
 import JobListTable from "./job-list-table/JobListTable";
 
+import { useJobFilters } from "../hooks/useJobFilters";
+import JobFiltersCard from "./JobFiltersCard";
+
 export default function JobList() {
   const [viewMode, setViewMode] = useState<"table" | "cards">("cards");
   const dispatch = useDispatch();
   const jobs = useSelector((state: RootState) => state.jobs.jobs);
+
+  const { filters, handleSearch, filteredJobs, handleFiltersSelect } =
+    useJobFilters({
+      jobs,
+    });
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -29,20 +37,26 @@ export default function JobList() {
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
       <JobListHeader
-        jobs={jobs}
+        jobs={filteredJobs}
         viewMode={viewMode}
+        searchTerm={filters.search}
         setViewMode={setViewMode}
+        setSearchTerm={handleSearch}
+      />
+      <JobFiltersCard
+        filters={filters}
+        handleFiltersSelect={handleFiltersSelect}
       />
 
       {/* Content */}
-      {jobs.length === 0 ? (
+      {filteredJobs.length === 0 ? (
         <Card padding="md" variant="glass">
           <JobListEmpty />
         </Card>
       ) : viewMode === "cards" ? (
-        <JobListCards jobs={jobs} />
+        <JobListCards jobs={filteredJobs} />
       ) : (
-        <JobListTable jobs={jobs} />
+        <JobListTable jobs={filteredJobs} />
       )}
     </div>
   );

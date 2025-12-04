@@ -40,6 +40,7 @@ export default function JobListViewToggle({
           </TabsList>
         </Tabs>
       )}
+      <div className="border-b border-gray-300" />
     </React.Fragment>
   );
 }

@@ -42,7 +42,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={cn(
-          "rounded-xl w-full transition-all duration-300 ease-out will-change-transform",
+          "z-10 rounded-xl w-full transition-all duration-300 ease-out will-change-transform",
           variantClasses[variant],
           paddingClasses[padding],
           hover && "hover:shadow-2xl hover:-translate-y-1 cursor-pointer",

@@ -41,7 +41,6 @@ export function useJobForm({ isEdit }: UseJobFormProps) {
 
   useEffect(() => {
     if (isEdit && singleJob) {
-      console.log("singleJob", singleJob);
       setFormData({
         ...singleJob,
         status: jobStatus.find(

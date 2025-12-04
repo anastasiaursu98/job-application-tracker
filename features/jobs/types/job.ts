@@ -32,3 +32,11 @@ export type Job = {
   company: string;
   appliedDate: Date;
 };
+
+export type JobFilter = {
+  search: string;
+  status: JobDropdown[];
+  types: JobDropdown[];
+  locations: JobDropdown[];
+  categories: JobDropdown[];
+};
