@@ -2,8 +2,8 @@ import React from "react";
 import { Job } from "@/features/jobs/types/job";
 import { cn } from "@/lib/utils";
 import { TableRow, TableCell } from "@/components/ui/table";
-import { getStatusClass } from "@/features/jobs/utils/jobUtils";
-import JobListActions from "./JobListActions";
+import JobListActions from "../JobListActions";
+import JobCardStatus from "../job-list-cards/JobCardStatus";
 
 interface JobListRowProps {
   jobs: Job[];
@@ -32,14 +32,7 @@ export default function JobListRow({ jobs }: JobListRowProps) {
             {job.company}
           </TableCell>
           <TableCell>
-            <span
-              className={cn(
-                "px-3 py-1 rounded-full text-xs font-semibold inline-block",
-                getStatusClass(job.status.value)
-              )}
-            >
-              {job.status.label}
-            </span>
+            <JobCardStatus status={job.status.value} />
           </TableCell>
           <TableCell className="text-gray-600">{job.type.label}</TableCell>
           <TableCell className="text-gray-600">{job.location.label}</TableCell>
