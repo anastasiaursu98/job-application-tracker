@@ -12,10 +12,7 @@ import { SidebarFooterContent } from "./SidebarFooterContent";
 import { mainMenuItems, bottomMenuItems } from "./menuConfig";
 
 export function AppSidebar() {
-  const handleSignOut = () => {
-    // TODO: Implement sign out logic
-    console.log("Sign out clicked");
-  };
+  const handleSignOut = () => {};
 
   return (
     <Sidebar className="border-r border-gray-200/50 bg-white">

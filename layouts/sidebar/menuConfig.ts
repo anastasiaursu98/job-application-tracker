@@ -5,7 +5,7 @@ import {
     Settings,
     HelpCircle,
 } from "lucide-react";
-import { ROUTES } from "@/constnats/routes";
+import { ROUTES } from "@/constants/routes";
 import { MenuItem } from "@/types/sidebar.types";
 
 export const mainMenuItems: MenuItem[] = [

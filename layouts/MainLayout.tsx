@@ -12,9 +12,9 @@ function MainLayoutContent({ children }: { children: React.ReactNode }) {
         <Header />
         <main
           className={cn(
-            "flex-1 w-full overflow-y-auto max-h-[calc(100vh-73px)] py-6 md:py-8",
+            "flex-1 w-full overflow-y-auto max-h-[calc(100vh-73px)] py-6 md:py-8 bg-gray-100",
             "px-4 md:px-6 lg:px-8",
-            "bg-gradient-to-br from-slate-50 via-white to-slate-50/50"
+
           )}
         >
           {children}
@@ -26,7 +26,7 @@ function MainLayoutContent({ children }: { children: React.ReactNode }) {
 
 export function MainLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex max-h-screen overflow-hidden bg-slate-50">
+    <div className="flex max-h-screen overflow-hidden">
       <SidebarProvider>
         <MainLayoutContent>{children}</MainLayoutContent>
       </SidebarProvider>

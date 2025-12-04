@@ -5,22 +5,31 @@ import {
   TableRow,
   TableHead,
   TableBody,
-  TableCell,
 } from "@/components/ui/table";
 import { Card } from "@/components/shared/Card";
-import { tableHeaders } from "@/features/jobs/constnats/list";
-import { Job } from "@/features/jobs/types/job";
-import { useJobStore } from "@/features/jobs/store/jobStore";
-import { cn } from "@/lib/utils";
+import { tableHeaders } from "@/features/jobs/constants/list";
+import { useDispatch } from "react-redux";
 import JobListHeader from "./JobListHeader";
 import JobListEmpty from "./JobListEmpty";
 import JobListRow from "./JobListRow";
-
-
+import { useSelector } from "react-redux";
+import type { RootState } from "@/store/store";
+import { useEffect } from "react";
+import { JOBS_STORAGE_KEY } from "../store/jobSlice";
+import { setJobs } from "../store/jobSlice";
 
 export default function JobList() {
+  const dispatch = useDispatch();
+  const jobs = useSelector((state: RootState) => state.jobs.jobs);
 
-  const { jobs } = useJobStore();
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const jobsFromStorage = localStorage.getItem(JOBS_STORAGE_KEY);
+      if (jobsFromStorage) {
+        dispatch(setJobs(JSON.parse(jobsFromStorage)));
+      }
+    }
+  }, []);
 
   return (
     <div className="space-y-6 animate-fade-in">
@@ -28,7 +37,7 @@ export default function JobList() {
       <JobListHeader />
 
       {/* Table Card */}
-      <Card padding="md">
+      <Card padding="md" variant="glass">
         {jobs.length === 0 ? (
           <JobListEmpty />
         ) : (
@@ -47,14 +56,12 @@ export default function JobList() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <JobListRow />
+                <JobListRow jobs={jobs} />
               </TableBody>
             </Table>
           </div>
         )}
       </Card>
-
-
     </div>
   );
 }

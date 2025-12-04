@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export type DropdownOption = {
-  key: string;
+  key: number | string;
   label: string;
   value: string;
 };
@@ -126,7 +126,11 @@ export function Dropdown({
           !disabled && "hover:shadow-sm"
         )}
       >
-        <span className={selectedOption ? "text-gray-900 font-medium" : "text-gray-500"}>
+        <span
+          className={
+            selectedOption ? "text-gray-900 font-medium" : "text-gray-500"
+          }
+        >
           {selectedOption?.label || placeholder}
         </span>
         <ChevronDown
@@ -142,7 +146,9 @@ export function Dropdown({
           ref={listRef}
           role="listbox"
           aria-activedescendant={
-            focusedIndex >= 0 ? `option-${options[focusedIndex].key}` : undefined
+            focusedIndex >= 0
+              ? `option-${options[focusedIndex].key}`
+              : undefined
           }
           className="absolute z-50 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-xl max-h-60 overflow-auto animate-fade-in"
         >
@@ -161,11 +167,12 @@ export function Dropdown({
               className={cn(
                 "px-3 py-2.5 text-sm cursor-pointer transition-all duration-150",
                 "first:rounded-t-lg last:rounded-b-lg",
-                option.value === value && "bg-primary/10 font-semibold text-primary",
+                option.value === value &&
+                  "bg-primary/10 font-semibold text-primary",
                 focusedIndex === index && "bg-gray-100",
                 option.value === value &&
-                focusedIndex === index &&
-                "bg-primary/20"
+                  focusedIndex === index &&
+                  "bg-primary/20"
               )}
             >
               {option.label}

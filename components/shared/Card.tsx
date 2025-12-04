@@ -20,7 +20,7 @@ const paddingClasses: Record<CardPadding, string> = {
 };
 
 const variantClasses: Record<CardVariant, string> = {
-  default: "bg-white shadow-md border border-gray-100",
+  default: "bg-white shadow-xl border border-gray-100",
   elevated: "bg-white shadow-xl border-0",
   outline: "bg-white border-2 border-gray-200 shadow-sm",
   glass: "bg-white/90 backdrop-blur-md border border-white/20 shadow-lg",

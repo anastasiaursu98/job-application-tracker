@@ -1,7 +1,11 @@
 export type JobStatus = "applied" | "interview" | "offer" | "rejected";
+
 export type JobPriority = "low" | "medium" | "high";
+
 export type JobType = "full-time" | "part-time" | "contract" | "internship";
+
 export type JobLocation = "remote" | "onsite" | "hybrid";
+
 export type JobCategory =
   | "engineering"
   | "design"
@@ -12,14 +16,19 @@ export type JobCategory =
   | "legal"
   | "other";
 
+export type JobDropdown = {
+  key: string;
+  value: string;
+  label: string;
+};
 export type Job = {
   id: string;
   title: string;
   description: string;
-  status: JobStatus;
-  type: JobType;
-  location: JobLocation;
-  category: JobCategory;
+  status: JobDropdown;
+  type: JobDropdown;
+  location: JobDropdown;
+  category: JobDropdown;
   company: string;
   appliedDate: Date;
 };

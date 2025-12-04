@@ -2,10 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { ROUTES } from "@/constnats/routes";
+import { ROUTES } from "@/constants/routes";
 
 export default function JobListHeader() {
     const router = useRouter();
+
     const handleOpenModal = () => {
         router.push(ROUTES.ADD_JOB);
     };
