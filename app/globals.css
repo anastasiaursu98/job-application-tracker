@@ -41,41 +41,71 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Brand Colors */
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-hover: var(--brand-primary-hover);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
+  
+  /* Status Colors */
+  --color-status-applied: var(--status-applied);
+  --color-status-interview: var(--status-interview);
+  --color-status-offer: var(--status-offer);
+  --color-status-rejected: var(--status-rejected);
+  --color-status-accepted: var(--status-accepted);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --radius: 0.75rem;
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.20 0 0);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.20 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --popover-foreground: oklch(0.20 0 0);
+  
+  /* Professional Color Palette - Refined Blues & Purples */
+  --primary: oklch(0.50 0.18 255); /* Deep Professional Blue */
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.55 0.15 200); /* Sophisticated Teal */
+  --secondary-foreground: oklch(0.99 0 0);
+  --muted: oklch(0.96 0.005 240);
+  --muted-foreground: oklch(0.45 0.01 240);
+  --accent: oklch(0.60 0.16 280); /* Elegant Purple */
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.55 0.20 25);
+  --border: oklch(0.92 0.005 240);
+  --input: oklch(0.94 0.005 240);
+  --ring: oklch(0.50 0.18 255);
+  --chart-1: oklch(0.55 0.18 255);
+  --chart-2: oklch(0.60 0.15 200);
+  --chart-3: oklch(0.50 0.12 180);
+  --chart-4: oklch(0.65 0.16 280);
+  --chart-5: oklch(0.58 0.14 240);
+  
+  /* Brand Colors - Professional & Trustworthy */
+  --brand-primary: oklch(0.50 0.18 255);
+  --brand-primary-hover: oklch(0.45 0.20 255);
+  --brand-secondary: oklch(0.55 0.15 200);
+  --brand-accent: oklch(0.60 0.16 280);
+  
+  /* Status Colors - Professional & Clear */
+  --status-applied: oklch(0.55 0.16 230);
+  --status-interview: oklch(0.58 0.14 200);
+  --status-offer: oklch(0.60 0.18 160);
+  --status-rejected: oklch(0.55 0.16 30);
+  --status-accepted: oklch(0.58 0.18 150);
+  
+  /* Sidebar */
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.20 0 0);
+  --sidebar-primary: oklch(0.50 0.18 255);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.97 0.005 240);
+  --sidebar-accent-foreground: oklch(0.20 0 0);
+  --sidebar-border: oklch(0.92 0.005 240);
+  --sidebar-ring: oklch(0.50 0.18 255);
 }
 
 .dark {
@@ -85,18 +115,18 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.65 0.22 262);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.80 0.19 162);
+  --secondary-foreground: oklch(0.145 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.85 0.20 85);
+  --accent-foreground: oklch(0.145 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --ring: oklch(0.65 0.22 262);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -104,19 +134,153 @@
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary: oklch(0.65 0.22 262);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar-ring: oklch(0.65 0.22 262);
+}
+
+/* Animation Keyframes */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Remove default focus outline, we'll add custom ones */
+  *:focus {
+    @apply outline-none;
+  }
+  
+  /* Custom focus styles */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+}
+
+@layer utilities {
+  /* Typography Scale */
+  .text-display-xl {
+    @apply text-5xl md:text-6xl font-bold tracking-tight;
+  }
+  
+  .text-display-lg {
+    @apply text-4xl md:text-5xl font-bold tracking-tight;
+  }
+  
+  .text-display-md {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+  
+  .text-heading-xl {
+    @apply text-2xl md:text-3xl font-semibold tracking-tight;
+  }
+  
+  .text-heading-lg {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+  
+  .text-heading-md {
+    @apply text-lg md:text-xl font-semibold;
+  }
+  
+  .text-heading-sm {
+    @apply text-base md:text-lg font-semibold;
+  }
+  
+  .text-body-lg {
+    @apply text-base md:text-lg font-normal;
+  }
+  
+  .text-body-md {
+    @apply text-sm md:text-base font-normal;
+  }
+  
+  .text-body-sm {
+    @apply text-xs md:text-sm font-normal;
+  }
+  
+  /* Animation Classes */
+  .animate-shimmer {
+    animation: shimmer 2s infinite linear;
+    background-size: 2000px 100%;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out;
+  }
+  
+  /* Gradient Utilities */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+  }
+  
+  .bg-gradient-accent {
+    background: linear-gradient(135deg, var(--brand-accent) 0%, oklch(0.65 0.22 45) 100%);
+  }
+  
+  /* Status Badge Colors */
+  .status-applied {
+    @apply bg-[oklch(0.95_0.03_220)] text-[oklch(0.40_0.15_220)] border border-[oklch(0.85_0.05_220)];
+  }
+  
+  .status-interview {
+    @apply bg-[oklch(0.95_0.03_165)] text-[oklch(0.45_0.15_165)] border border-[oklch(0.85_0.05_165)];
+  }
+  
+  .status-offer {
+    @apply bg-[oklch(0.95_0.03_140)] text-[oklch(0.45_0.15_140)] border border-[oklch(0.85_0.05_140)];
+  }
+  
+  .status-rejected {
+    @apply bg-[oklch(0.95_0.03_25)] text-[oklch(0.45_0.15_25)] border border-[oklch(0.85_0.05_25)];
+  }
+  
+  .status-accepted {
+    @apply bg-[oklch(0.95_0.03_145)] text-[oklch(0.40_0.15_145)] border border-[oklch(0.85_0.05_145)];
+  }
+  
+  /* Container */
+  .container-responsive {
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px];
+  }
+  
+  /* Responsive Grid */
+  .grid-responsive-cards {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6;
+  }
+  
+  .grid-responsive-form {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6;
   }
 }

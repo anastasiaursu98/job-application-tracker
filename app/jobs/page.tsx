@@ -1,4 +1,4 @@
-import JobList from "@/features/job-list/components/JobList";
+import JobList from "@/features/jobs/components/JobListTable";
 
 export default function JobsPage() {
   return <JobList />;
