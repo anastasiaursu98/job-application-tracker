@@ -2,11 +2,13 @@ import { FormField } from "@/components/shared/FormField";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Briefcase, Building2, FileText } from "lucide-react";
+import { FormErrors } from "../../types/add-job-form.types";
 
 interface JobBasicDetailsProps {
   title: string;
   company: string;
   description: string;
+  errors?: FormErrors;
   onFieldChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
@@ -14,10 +16,12 @@ interface JobBasicDetailsProps {
 
 export function JobBasicDetails({
   title,
+  errors,
   company,
   description,
   onFieldChange,
 }: JobBasicDetailsProps) {
+  console.log("errors", errors);
   return (
     <section className="space-y-8">
       {/* Section Header */}
@@ -41,6 +45,7 @@ export function JobBasicDetails({
             type="text"
             value={title}
             onChange={onFieldChange}
+            error={errors?.title}
             className="transition-all duration-200 focus:shadow-md"
           />
         </FormField>
@@ -56,6 +61,7 @@ export function JobBasicDetails({
             name="company"
             placeholder="e.g. TechCorp Inc."
             type="text"
+            error={errors?.company}
             value={company}
             onChange={onFieldChange}
             className="transition-all duration-200 focus:shadow-md"

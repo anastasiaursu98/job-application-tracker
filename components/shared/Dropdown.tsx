@@ -16,7 +16,7 @@ type DropdownProps = {
   options: DropdownOption[];
   placeholder?: string;
   disabled?: boolean;
-  error?: boolean;
+  error?: string | boolean;
   id?: string;
 };
 
@@ -179,6 +179,9 @@ export function Dropdown({
             </li>
           ))}
         </ul>
+      )}
+      {error && typeof error === "string" && (
+        <p className="text-sm text-destructive mt-2">{error}</p>
       )}
     </div>
   );

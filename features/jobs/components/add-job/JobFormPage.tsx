@@ -8,18 +8,13 @@ import { JobFormActions } from "./JobFormActions";
 import { useJobForm } from "../../hooks/useJobForm";
 import { JobDropdown } from "../../types/job";
 
-/**
- * AddJobPage - Main page component for adding a new job application
- *
- * This component orchestrates the add job form by composing smaller,
- * focused components and delegating business logic to a custom hook.
- */
 interface JobFormPageProps {
   isEdit?: boolean;
 }
 export default function JobFormPage({ isEdit }: JobFormPageProps) {
   const {
     formData,
+    errors,
     updateField,
     updateDropdown,
     updateDate,
@@ -28,6 +23,7 @@ export default function JobFormPage({ isEdit }: JobFormPageProps) {
     updateJobAction,
   } = useJobForm({ isEdit });
 
+  console.log;
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
       <Card>
@@ -41,6 +37,7 @@ export default function JobFormPage({ isEdit }: JobFormPageProps) {
             company={formData.company}
             description={formData.description}
             onFieldChange={updateField}
+            errors={errors}
           />
 
           {/* Application metadata and details */}
@@ -50,6 +47,7 @@ export default function JobFormPage({ isEdit }: JobFormPageProps) {
             location={formData.location as JobDropdown}
             category={formData.category as JobDropdown}
             appliedDate={formData.appliedDate}
+            errors={errors}
             onDropdownChange={updateDropdown}
             onDateChange={updateDate}
           />

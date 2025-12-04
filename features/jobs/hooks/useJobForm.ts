@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import {
@@ -13,6 +13,8 @@ import { Job, JobDropdown } from "@/features/jobs/types/job";
 import {
   AddJobFormData,
   defaultAddJobFormData,
+  FormErrors,
+  ErrorMessages,
 } from "../types/add-job-form.types";
 import { useDispatch, useSelector } from "react-redux";
 import { addJob, getSingleJob, updateJob } from "../store/jobSlice";
@@ -22,6 +24,7 @@ interface UseJobFormProps {
   isEdit: boolean | undefined;
 }
 export function useJobForm({ isEdit }: UseJobFormProps) {
+  const [errors, setErrors] = useState<FormErrors>({});
   const [formData, setFormData] = useState<AddJobFormData>(
     defaultAddJobFormData
   );
@@ -59,13 +62,14 @@ export function useJobForm({ isEdit }: UseJobFormProps) {
     }
   }, [isEdit, singleJob]);
 
-  const updateField = (
+  const handleUpdateInput = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors((prev) => ({ ...prev, [e.target.name]: undefined }));
   };
 
-  const updateDropdown = (name: string, value: string) => {
+  const handleUpdateDropdown = (name: string, value: string) => {
     const dropDowns = {
       status: jobStatus,
       type: jobType,
@@ -77,16 +81,37 @@ export function useJobForm({ isEdit }: UseJobFormProps) {
     );
     if (dropDownOption) {
       setFormData({ ...formData, [name]: dropDownOption });
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
   const updateDate = (date: Date | null) => {
     setFormData({ ...formData, appliedDate: date ?? new Date() });
+    setErrors((prev) => ({ ...prev, appliedDate: undefined }));
   };
+
+  const validateForm = useCallback((): boolean => {
+    const newErrors: FormErrors = {};
+    const requiredFields: { [name: string]: string } = {
+      title: formData.title.trim(),
+      company: formData.company.trim(),
+      status: formData.status.value,
+      type: formData.type.value,
+      location: formData.location.value,
+      category: formData.category.value,
+    };
+    Object.entries(requiredFields).forEach(([name, value]) => {
+      if (!value || (typeof value === "string" && !value.trim())) {
+        newErrors[name as keyof FormErrors] = ErrorMessages.REQUIRED_FIELD;
+      }
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  }, [formData]);
 
   const submitJob = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    if (!validateForm()) return;
     const newJob: Job = {
       ...formData,
       id: crypto.randomUUID(),
@@ -105,7 +130,7 @@ export function useJobForm({ isEdit }: UseJobFormProps) {
       appliedDate: formData.appliedDate,
     };
 
-    dispatch(addJob(newJob));
+    //dispatch(addJob(newJob));
     router.push(ROUTES.HOME);
   };
 
@@ -137,9 +162,10 @@ export function useJobForm({ isEdit }: UseJobFormProps) {
   };
 
   return {
+    errors,
     formData,
-    updateField,
-    updateDropdown,
+    updateField: handleUpdateInput,
+    updateDropdown: handleUpdateDropdown,
     updateDate,
     submitJob,
     cancelForm,

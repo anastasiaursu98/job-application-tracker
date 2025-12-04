@@ -48,7 +48,7 @@ export default function JobCard({ job, jobs }: JobCardProps) {
         <h3 className="text-xl font-bold text-gray-900 line-clamp-2 flex-1">
           {job.title}
         </h3>
-        <JobCardStatus status={job.status.value} />
+        <JobCardStatus status={job.status?.value} />
       </div>
 
       {/* Company */}
@@ -64,9 +64,9 @@ export default function JobCard({ job, jobs }: JobCardProps) {
 
       {/* Job Details */}
       <div className="space-y-2 mt-auto">
-        <JobDetailsItem icon={Briefcase}>{job.type.label}</JobDetailsItem>
-        <JobDetailsItem icon={MapPin}>{job.location.label}</JobDetailsItem>
-        <JobDetailsItem icon={FolderOpen}>{job.category.label}</JobDetailsItem>
+        <JobDetailsItem icon={Briefcase}>{job.type?.label}</JobDetailsItem>
+        <JobDetailsItem icon={MapPin}>{job.location?.label}</JobDetailsItem>
+        <JobDetailsItem icon={FolderOpen}>{job.category?.label}</JobDetailsItem>
         <JobDetailsItem icon={Calendar}>
           <span className="font-mono">
             Applied: {formatAppliedDate(job.appliedDate)}

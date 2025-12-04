@@ -9,6 +9,7 @@ import {
 } from "@/features/jobs/constants/list";
 import { Briefcase, Calendar, MapPin, Layers, Target } from "lucide-react";
 import { JobDropdown } from "../../types/job";
+import { FormErrors } from "../../types/add-job-form.types";
 
 interface JobApplicationProps {
   status: JobDropdown;
@@ -16,6 +17,7 @@ interface JobApplicationProps {
   location: JobDropdown;
   category: JobDropdown;
   appliedDate: Date;
+  errors?: FormErrors;
   onDropdownChange: (name: string, value: string) => void;
   onDateChange: (date: Date | null) => void;
 }
@@ -26,6 +28,7 @@ export function JobApplication({
   location,
   category,
   appliedDate,
+  errors,
   onDropdownChange,
   onDateChange,
 }: JobApplicationProps) {
@@ -51,6 +54,7 @@ export function JobApplication({
             value={status.value || ""}
             onChange={(value) => onDropdownChange("status", value)}
             placeholder="Select current status"
+            error={errors?.status}
           />
         </FormField>
 
@@ -66,6 +70,7 @@ export function JobApplication({
             value={type.value || ""}
             onChange={(value) => onDropdownChange("type", value)}
             placeholder="Select job type"
+            error={errors?.type}
           />
         </FormField>
 
@@ -81,6 +86,7 @@ export function JobApplication({
             value={location.value || ""}
             onChange={(value) => onDropdownChange("location", value)}
             placeholder="Select location"
+            error={errors?.location}
           />
         </FormField>
 
@@ -96,6 +102,7 @@ export function JobApplication({
             value={category.value || ""}
             onChange={(value) => onDropdownChange("category", value)}
             placeholder="Select category"
+            error={errors?.category}
           />
         </FormField>
       </div>
