@@ -1,5 +1,5 @@
 import JobList from "@/features/job-list/components/JobList";
 
-export default function Home() {
+export default function JobsPage() {
   return <JobList />;
 }
